@@ -1,0 +1,144 @@
+html {
+  font-size: 100%;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+body {
+  font-family: $base-font-family;
+  font-size: $base-font-size;
+  font-weight: $fw-regular;
+  line-height: $base-line-height;
+  transition: $main-transition;
+  background-color: $body-bg;
+  overflow-x: hidden;
+}
+::-webkit-scrollbar {
+  width: 16px;
+}
+::-webkit-scrollbar-thumb {
+  height: 56px;
+  border-radius: 8px;
+  border: 4px solid transparent;
+  background-clip: content-box;
+  background-color: $scrollThumbColor;
+
+  &:hover {
+    background-color: $scrollThumbHover;
+  }
+}
+body::after {
+  content: "";
+  position: fixed;
+  display: block;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  z-index: $zIndexBodyOverlay;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: var(--opacity, 0);
+  visibility: var(--visibility, hidden);
+  transition: $main-transition;
+}
+.overlay-open {
+  --opacity: 1;
+  --visibility: visible;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: $base-headings-line-height;
+  font-family: inherit;
+  font-weight: $fw-medium;
+}
+h1 {
+  font-size: $h1-fs;
+}
+h2 {
+  font-size: $h2-fs;
+}
+h3 {
+  font-size: $h3-fs;
+}
+h4 {
+  font-size: $h4-fs;
+}
+h5 {
+  font-size: $h5-fs;
+}
+h6 {
+  font-size: $h6-fs;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+a,
+button,
+textarea,
+input {
+  font-family: inherit;
+}
+a {
+  text-decoration: none;
+  font-family: inherit;
+  color: $white;
+  display: inline-block;
+}
+
+img:not(.logo) {
+  max-width: 100%;
+  display: block;
+}
+.btn {
+  cursor: pointer;
+  display: inline-block;
+  text-align: center;
+  user-select: none;
+  border: none;
+  outline: none;
+  padding: 1.09375em 3em;
+  line-height: inherit;
+  font-size: $btn-base-fs;
+  font-weight: $fw-bold;
+  background-color: $moderateCyan;
+  border-radius: $br-pill;
+  transition: $main-transition;
+}
+.container {
+  max-width: 44em;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.no-scroll {
+  overflow-y: hidden;
+}
+.no-click {
+  pointer-events: none;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap; /* added line */
+  border: 0;
+}

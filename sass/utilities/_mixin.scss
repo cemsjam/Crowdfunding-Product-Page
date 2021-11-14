@@ -1,0 +1,30 @@
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@mixin box($size, $height: $size) {
+  width: $size;
+  height: $height;
+}
+@mixin grid-center {
+  display: grid;
+  place-items: center;
+}
+@mixin base-card-styling {
+  border-radius: $br-main;
+  /* box-shadow: 0 0 2px rgba(0, 0, 0, 0.2); */
+  border: 1px solid lighten($darkGray, 40);
+  background-color: $white;
+}
+
+@mixin truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+@mixin disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+  user-select: none;
+}

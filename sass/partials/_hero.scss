@@ -1,0 +1,213 @@
+.hero {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+/* CTA */
+.cta-section {
+  @include base-card-styling;
+  text-align: center;
+  padding: 0 1.2rem 1.5rem;
+  transform: translateY(-2rem);
+  transition: $main-transition;
+
+  @include breakpoint-up(medium) {
+    padding-left: 2.65rem;
+    padding-right: 2.65rem;
+  }
+
+  .mastercraft-logo {
+    margin: 0 auto;
+    transform: translateY(-1.75rem);
+  }
+  .main-title {
+    font-size: 1.5rem;
+    font-weight: $fw-bold;
+    margin-bottom: 1.3rem;
+  }
+  .subtitle {
+    color: $darkGray;
+    font-weight: $fw-medium;
+    margin-bottom: 1.8rem;
+  }
+  .btn-group {
+    @include flex-center;
+    @include breakpoint-up(medium) {
+      justify-content: space-between;
+    }
+  }
+  .btn-primary {
+    margin-right: 1rem;
+    padding: 1em 3em;
+    color: $white;
+    &:hover,
+    &:focus {
+      background-color: $darkCyan;
+    }
+  }
+  .bm-container {
+    @include breakpoint-up(medium) {
+      display: flex;
+      align-items: center;
+      width: 11rem;
+      background-color: lighten($darkGray, 42);
+      border-radius: 30px;
+    }
+    &:hover .bm-icon__circle,
+    &:focus-within .bm-icon__circle {
+      fill: $darkGray;
+    }
+    &:hover .bm-icon__inside,
+    &:focus-within .bm-icon__inside {
+      fill: $white;
+    }
+
+    .btn-secondary {
+      @include breakpoint-up(medium) {
+        width: 100%;
+        display: flex;
+        align-items: center;
+      }
+
+      .bm-icon {
+        display: inline-block;
+        svg {
+          vertical-align: middle;
+        }
+        &__circle,
+        &__inside {
+          transition: $main-transition;
+        }
+      }
+      .bm-text {
+        display: inline-block;
+        color: $darkGray;
+        font-weight: $fw-bold;
+        margin-left: 0.65rem;
+        transition: $main-transition;
+        user-select: none;
+        @include breakpoint-down(small) {
+          display: none;
+        }
+      }
+    }
+  }
+  .bookmarked {
+    .btn-secondary {
+      .bm-icon__circle {
+        fill: $darkCyan;
+      }
+      .bm-icon__inside {
+        fill: $white;
+      }
+    }
+    @include breakpoint-up(medium) {
+      .btn-secondary {
+        .bm-text {
+          color: $darkCyan;
+        }
+      }
+    }
+  }
+}
+
+/* STATS */
+.project-stats {
+  @include base-card-styling;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+  .backer-stats {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    @include breakpoint-down(small) {
+      flex-direction: column;
+    }
+
+    .backer-item {
+      padding: 1.5rem;
+      flex: 1;
+      @include breakpoint-up(medium) {
+        padding: 2rem;
+        text-align: left;
+      }
+
+      .numbers,
+      .number-title {
+        display: block;
+        transition: $main-transition;
+      }
+      .numbers {
+        font-size: 2.3rem;
+        font-weight: $fw-bold;
+        line-height: 1.3;
+      }
+      .number-title {
+        color: $darkGray;
+        white-space: nowrap;
+      }
+    }
+
+    .bordered {
+      position: relative;
+    }
+    .bordered::before,
+    .bordered::after {
+      content: "";
+      position: absolute;
+      display: block;
+      width: 50%;
+      height: 1px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: lighten($darkGray, 30);
+      @include breakpoint-up(medium) {
+        height: 50%;
+        width: 1px;
+      }
+    }
+    .bordered::before {
+      top: 0;
+      @include breakpoint-up(medium) {
+        left: 0;
+        top: 50%;
+      }
+    }
+
+    .bordered::after {
+      top: 100%;
+      @include breakpoint-up(medium) {
+        right: 0;
+        left: unset;
+        top: 50%;
+      }
+    }
+  }
+  .progress-bar {
+    width: calc(100% - 4rem);
+    height: 0.7rem;
+    margin: 1rem auto;
+    background-color: lighten($darkGray, 40);
+    border-radius: $br-main;
+    overflow: hidden;
+    position: relative;
+    .tracker {
+      position: absolute;
+      width: 25%;
+      inset: 0;
+      background-color: $moderateCyan;
+      border-radius: $br-main;
+      transition: all 1s linear;
+    }
+  }
+}
+.loading {
+  opacity: 0;
+  transition: 0.2s ease-out;
+}

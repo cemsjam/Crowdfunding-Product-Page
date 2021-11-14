@@ -1,0 +1,105 @@
+.about-project {
+  margin: 1rem 0;
+  padding: 0 1rem;
+  text-align: left;
+  .about-subtitle:not(:last-child) {
+    margin-bottom: 1rem;
+  }
+
+  .about_info {
+    padding: 2rem;
+    margin-bottom: 1rem;
+    @include base-card-styling;
+    .main-title {
+      font-size: 1.4rem;
+      font-weight: $fw-bold;
+      margin-bottom: 2rem;
+    }
+    .subtitle {
+      color: $darkGray;
+    }
+  }
+  .cards {
+    margin: 2.5rem 0;
+  }
+  .stand-card-item {
+    @include base-card-styling;
+    padding: 1.7rem;
+    margin-bottom: 1rem;
+    .stand-header {
+      @include breakpoint-down(small) {
+        margin-bottom: 1rem;
+      }
+      @include breakpoint-up(medium) {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .title {
+        font-size: 1.25rem;
+        font-weight: $fw-bold;
+        @include breakpoint-down(small) {
+          margin-bottom: 0.35rem;
+        }
+      }
+      .pledge {
+        display: inline-block;
+        color: $darkCyan;
+        font-weight: $fw-medium;
+      }
+    }
+    .stand-desc {
+      color: $darkGray;
+      margin: 1.5rem 0;
+    }
+    .stand-cta {
+      @include breakpoint-up(medium) {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .btn-reward {
+        font-size: 0.8rem;
+        transition: $main-transition;
+        color: $white;
+        &.disabled {
+          background-color: $darkGray;
+          cursor: not-allowed;
+        }
+        &:hover:not(.disabled),
+        &:focus:not(.disabled) {
+          background-color: $darkCyan;
+        }
+      }
+    }
+    &.disabled {
+      @include disabled;
+    }
+  }
+}
+.stock-status {
+  display: flex;
+  align-items: center;
+  font-weight: $fw-medium;
+  &.disabled {
+    color: $darkGray;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+  @include breakpoint-down(small) {
+    margin-bottom: 1rem;
+  }
+  .stock-count {
+    font-size: 2.2rem;
+    font-weight: $fw-bold;
+  }
+  .stock-text {
+    display: inline-block;
+    line-height: 1;
+    font-size: 0.9rem;
+    margin-left: 0.5rem;
+
+    color: $darkGray;
+  }
+}
