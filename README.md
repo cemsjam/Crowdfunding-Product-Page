@@ -4,7 +4,7 @@
 
 - Fully Responsive
 
--- Accessible
+- Accessible
 
 - Keyboard Navigate whole page
 
