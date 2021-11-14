@@ -16,7 +16,7 @@
   z-index: $zIndexModals;
 }
 .modal {
-  height: 80vh;
+  max-height: 80vh;
   overflow-y: auto;
   padding: 2rem;
   background-color: $white;
@@ -215,8 +215,8 @@
     }
     .money-sign {
       position: absolute;
-      top: 48%;
-      left: 20%;
+      top: 50%;
+      left: 18%;
       transform: translateY(-50%);
       font-size: 1rem;
       font-weight: $fw-medium;
@@ -227,8 +227,8 @@
       outline: none;
       width: 111px;
       height: 58px;
-      padding-left: 0.2rem;
-      padding-bottom: 0.18rem;
+      padding-top: 21px;
+      padding-bottom: 22px;
       color: lighten($black, 30);
       border-radius: $br-pill;
       font-size: 1rem;
@@ -252,6 +252,7 @@
         border-color: $error;
         background-color: $error-light;
         color: $error;
+        caret-color: $error;
       }
       .content-input:hover:not(:disabled) {
         border-color: $error;
@@ -276,6 +277,7 @@
       .content-input {
         border-color: $success;
         background-color: $success-light;
+        caret-color: $success;
       }
       .content-input:hover:not(:disabled) {
         border-color: $success;
@@ -328,15 +330,15 @@
   position: fixed;
   max-width: 500px;
   width: 100%;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(0.9);
   text-align: center;
   padding: 2.1rem;
   margin: 1rem auto;
   border-radius: $br-main;
   z-index: $zIndexModals;
   background-color: $white;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.9);
   opacity: 0;
   visibility: hidden;
   transition: visibility 0ms ease 0.5s, opacity 0.5s, transform 0.5s;

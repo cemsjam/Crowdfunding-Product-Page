@@ -46,6 +46,7 @@ const removeCommas = (item) => {
 const numWithCommas = (item) => {
   return item.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 };
+
 //#endregion
 //#region 3.toggle menu
 const openMenu = () => {
@@ -57,6 +58,12 @@ const openMenu = () => {
   hamburgerIcon.parentElement.setAttribute("aria-expanded", true);
   disableScrolling();
   openOverlay();
+  focusableElementsString = "button , a";
+  focusableElements = header.querySelectorAll(`${focusableElementsString}`);
+  focusableElements = Array.prototype.slice.call(focusableElements);
+  firstTabStop = focusableElements[0];
+  lastTabStop = focusableElements[focusableElements.length - 1];
+  window.addEventListener("keydown", trapTabKey);
 };
 const closeMenu = () => {
   header.classList.remove("show-menu");
@@ -67,6 +74,7 @@ const closeMenu = () => {
   hamburgerIcon.parentElement.setAttribute("aria-expanded", false);
   enableScrolling();
   closeOverlay();
+  window.removeEventListener("keydown", trapTabKey);
 };
 const escKeyHandlerMenu = (e) => {
   if (e.key === "Escape") {
@@ -121,23 +129,37 @@ let isModalActive = false;
 let isModalCompletedActive = false;
 // for updating stats
 let updatedTotalRaised, updatedTotalBackers, inputID;
+trapTabKey = (e) => {
+  if (e.keyCode !== 9) {
+    return;
+  } else if (
+    e.keyCode === 9 &&
+    e.shiftKey &&
+    document.activeElement == firstTabStop
+  ) {
+    e.preventDefault();
+    lastTabStop.focus();
+  } else if (
+    e.keyCode === 9 &&
+    !e.shiftKey &&
+    document.activeElement == lastTabStop
+  ) {
+    e.preventDefault();
+    firstTabStop.focus();
+  }
+};
 const modalOpen = () => {
+  let focusableInputs = radioCardInputs.filter((item) => !item.disabled);
   focusedElementBeforeModal = document.activeElement;
   closeMenu();
   modal.classList.add("show-modal");
   disableScrolling();
   openOverlay();
-  focusableElementsString = "#noReward:not(:disabled),#closeModalBtn";
-  focusableElements = modal.querySelectorAll(focusableElementsString);
-  /* if (focusableElements.length == 1) {
-    
-    focusableElements.push(bambooStand);
-  } */
+  focusableElements = [closeModalBtn, focusableInputs[0]];
   focusableElements = Array.prototype.slice.call(focusableElements);
   firstTabStop = focusableElements[0];
   lastTabStop = focusableElements[focusableElements.length - 1];
   window.addEventListener("keydown", trapTabKey);
-  firstTabStop.focus();
   window.addEventListener("keydown", escKeyHandlerModal);
 };
 const modalClose = () => {
@@ -181,25 +203,7 @@ const showCtaAndFocusTrap = (element) => {
   firstTabStop = currentFocusableEls[0];
   lastTabStop = currentFocusableEls[currentFocusableEls.length - 1];
 };
-trapTabKey = (e) => {
-  if (e.keyCode !== 9) {
-    return;
-  } else if (
-    e.keyCode === 9 &&
-    e.shiftKey &&
-    document.activeElement == firstTabStop
-  ) {
-    e.preventDefault();
-    lastTabStop.focus();
-  } else if (
-    e.keyCode === 9 &&
-    !e.shiftKey &&
-    document.activeElement == lastTabStop
-  ) {
-    e.preventDefault();
-    firstTabStop.focus();
-  }
-};
+
 primaryBtn.addEventListener("click", () => {
   if (!isModalActive && !isModalCompletedActive) {
     modalOpen();
@@ -214,9 +218,37 @@ rewardBtns.forEach(function (btn) {
     }
   });
 });
+const checkStock = () => {
+  const cards = document.querySelectorAll(".stand-card-item");
+  cards.forEach((card) => {
+    const cardStock = card.querySelector(".stock-count").textContent;
+    const cardBtn = card.querySelector("button");
+    if (cardStock == "0") {
+      cardBtn.disabled = true;
+      cardBtn.textContent = "Out Of Stock";
+      cardBtn.classList.add("disabled");
+      card.classList.add("disabled");
+    } else if (cardStock > 0) {
+      cardBtn.textContent = "Select Reward";
+    }
+  });
+  const hasStockArr = radioCardInputs.filter((item) => {
+    return item.id !== "noReward";
+  });
+  hasStockArr.forEach((element) => {
+    const parent = element.parentElement;
+    const label = element.nextElementSibling;
+    const modalStock = parent.querySelector(".stock-count").textContent;
+    if (modalStock == "0") {
+      element.disabled = true;
+      label.classList.add("disabled");
+      parent.classList.add("disabled");
+    }
+  });
+};
 closeModalBtn.addEventListener("click", modalClose);
 closeModalBtn.addEventListener("click", resetRadioBtns);
-
+// modal interactive phase
 activeInputs.forEach((item) => {
   item.addEventListener("change", (e) => {
     resetRadioBtns();
@@ -284,7 +316,7 @@ activeInputs.forEach((item) => {
 });
 //#endregion
 //#region 6.update project stats
-// Almost finished updating functions
+
 const updateBackers = () => {
   totalBackers.textContent = updatedTotalBackers;
 };
@@ -302,6 +334,7 @@ const updateRaisedAndStock = () => {
   } else {
     totalRaised.textContent = updatedTotalRaised;
   }
+  checkStock();
 };
 const setBarValue = () => {
   let remainingPercentage;
@@ -325,7 +358,7 @@ const setBarValue = () => {
 //#region 7.Modal Completed
 const escKeyHandlerModalCompleted = (e) => {
   if (e.key === "Escape") {
-    return pledgedSuccessfully();
+    return StepsCompleted();
   }
 };
 const openCompletedModal = () => {
@@ -353,7 +386,7 @@ const scrollToViewStats = () => {
   window.scrollTo(0, statsPos);
 };
 const stats = document.querySelector(".project-stats");
-const pledgedSuccessfully = (e) => {
+const StepsCompleted = (e) => {
   modalCompleted.classList.remove("show-modal-completed");
   window.removeEventListener("keydown", escKeyHandlerModalCompleted);
   window.removeEventListener("keydown", trapTabKey);
@@ -369,7 +402,10 @@ const pledgedSuccessfully = (e) => {
     updateBackers();
     updateRaisedAndStock();
     setBarValue();
-  }, 400);
+  }, 450);
 };
-modalCompletedBtn.addEventListener("click", pledgedSuccessfully);
+
+modalCompletedBtn.addEventListener("click", StepsCompleted);
 //#endregion
+window.addEventListener("DOMContentLoaded", checkStock);
+console.log(modal);

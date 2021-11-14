@@ -132,7 +132,7 @@
           <div class="about-body">
             <div class="cards">
               <!-- stand card item 1 -->
-              <div class="stand-card-item">
+              <div class="stand-card-item" data-standcard="bambooStand">
                 <div class="stand-header">
                   <h3 class="title">Bamboo Stand</h3>
                   <span class="pledge">Pledge $25 or more</span>
@@ -161,7 +161,7 @@
                 </div>
               </div>
               <!-- stand card item 2 -->
-              <div class="stand-card-item">
+              <div class="stand-card-item" data-standcard="editionStand">
                 <div class="stand-header">
                   <h3 class="title">Black Edition Stand</h3>
                   <span class="pledge">Pledge $75 or more</span>
@@ -190,7 +190,7 @@
                 </div>
               </div>
               <!-- stand card item 3 -->
-              <div class="stand-card-item disabled">
+              <div class="stand-card-item" data-standcard="specialStand">
                 <div class="stand-header">
                   <h3 class="title">Mahogany Special Edition</h3>
                   <span class="pledge">Pledge $200 or more</span>
@@ -201,11 +201,11 @@
                   list. Shipping is included.
                 </p>
                 <div class="stand-cta">
-                  <div class="stock-status disabled" disabled>
-                    <span class="stock-count" data-stock="specialStand">0</span>
+                  <div class="stock-status">
+                    <span class="stock-count" data-stock="specialStand">1</span>
                     <span class="stock-text">left</span>
                   </div>
-                  <button href="#" class="btn btn-reward disabled" disabled>
+                  <button type="button" href="#" class="btn btn-reward" id="rewardBtn" aria-controls="modal">
                     Out of Stock
                   </button>
                 </div>
@@ -238,7 +238,7 @@
           </p>
         </div>
         <div class="modal-body" role="radiogroup">
-          <!-- model item 1 -->
+          <!-- modal item 1 -->
           <div
             class="modal-item"
             data-item-id="noReward"
@@ -293,7 +293,7 @@
             </div>
           </div>
 
-          <!-- model item 2 -->
+          <!-- modal item 2 -->
           <div class="modal-item" role="radio">
             <input
               class="modal-item__radio-btns"
@@ -346,7 +346,7 @@
               </div>
             </div>
           </div>
-          <!-- model item 3 -->
+          <!-- modal item 3 -->
           <div class="modal-item" role="radio">
             <input
               class="modal-item__radio-btns"
@@ -397,19 +397,19 @@
               </div>
             </div>
           </div>
-          <!-- model item 4 -->
-          <div class="modal-item disabled" role="radio">
+          <!-- modal item 4 -->
+          <div class="modal-item" role="radio">
             <input
               class="modal-item__radio-btns"
               type="radio"
               id="specialStand"
               name="PledgeAmount"
-              disabled
+              
             />
             <label
-              class="modal-item__label disabled"
+              class="modal-item__label"
               for="specialStand"
-              disabled
+              
             >
               <div class="modal-item__custom-input">
                 <span class="checkmark" aria-hidden="true"></span>
@@ -425,7 +425,7 @@
                 list. Shipping is included.
               </p>
               <div class="stock-status modal-stock" aria>
-                <span class="stock-count">0</span>
+                <span class="stock-count" data-stock="specialStand">1</span>
                 <span class="stock-text modal-text-left">left</span>
               </div>
             </label>
