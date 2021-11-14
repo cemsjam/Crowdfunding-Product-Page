@@ -1,19 +1,19 @@
-- Crowdfunding Product Page
+# Crowdfunding Product Page
 
-## Mobile First
+- Mobile First
 
-## Fully Responsive
+- Fully Responsive
 
-## Accessible
+-- Accessible
 
-## Keyboard Navigate whole page
+- Keyboard Navigate whole page
 
-- Made with
+# Made with
 
-## HTML
+- HTML
 
-## SCSS
+- SCSS
 
-## JS
+- JS
 
 
