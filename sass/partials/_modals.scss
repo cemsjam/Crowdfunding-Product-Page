@@ -64,7 +64,7 @@
       transform-origin: 50% 50%;
 
       font-size: 1.22rem;
-      color: lighten($darkGray, 20);
+      color: darken($darkGray, 10);
     }
   }
 }
@@ -95,17 +95,21 @@
     &:focus {
       outline: 5px solid black;
     }
-    &:checked + label > div .checkmark::before {
+    &:checked + label > header .checkmark::before {
       transform: scale(1) translate(-50%, -50%);
     }
     &:checked + label {
       border-color: $moderateCyan;
+    }
+    &:not(:checked):hover + label > header .modal-item__stand-title {
+      color: $moderateCyan;
     }
   }
   &__label {
     display: block;
     padding: 2rem 1.5rem 0.75rem;
     cursor: pointer;
+    transition: $main-transition;
     @include breakpoint-up(medium) {
       position: relative;
     }
@@ -117,7 +121,7 @@
       display: none;
     }
   }
-  &__custom-input {
+  &__header {
     $radioSize: 24px;
     display: grid;
     grid-template-columns: min-content 1fr;

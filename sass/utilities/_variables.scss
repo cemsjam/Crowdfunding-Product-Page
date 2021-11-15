@@ -1,10 +1,8 @@
+//#region colors
 //primary colors
-
 $moderateCyan: hsl(176, 50%, 47%);
 $darkCyan: hsl(176, 72%, 28%);
-
 //neutral colors
-
 $black: hsl(0, 0%, 0%);
 $white: hsl(0, 0%, 100%);
 $darkGray: hsl(0, 0%, 48%);
@@ -15,12 +13,8 @@ $success-light: #edffed;
 $scrollbarColor: hsl(0, 0%, 38%);
 //bg-color
 $body-bg: darken($white, 6);
-
-//scrollbar
-$scrollThumbColor: $scrollbarColor;
-$scrollThumbHover: lighten($scrollThumbColor, 15);
-
-//Typoghraphy
+//#endregion
+//#region Typoghraphy
 $base-font-family: "Commissioner", sans-serif;
 $base-font-size: 1rem;
 $btn-base-fs: 1rem;
@@ -38,12 +32,17 @@ $fw-bold: 700;
 
 $base-line-height: 1.6;
 $base-headings-line-height: 1.1;
+//#endregion
 
 $br-main: 8px;
 $br-pill: 100vh;
 $br-percent: 50%;
 $main-transition: all 0.3s ease-in-out;
-/* z-index modals */
+//scrollbar
+$scrollThumbColor: $scrollbarColor;
+$scrollThumbHover: lighten($scrollThumbColor, 15);
+//#region z-index
 $zIndexBodyOverlay: 500;
 $zIndexNavMenu: 600;
 $zIndexModals: 1000;
+//#endregion

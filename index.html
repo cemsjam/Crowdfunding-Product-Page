@@ -14,8 +14,8 @@
       href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
       integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
       crossorigin="anonymous"
-    />
-    <link rel="stylesheet" href="./css/index.css" />
+    />  
+    <link rel="stylesheet" href="./css/index.min.css" />
     <title>Frontend Mentor | Crowdfunding product page</title>
   </head>
   <body>
@@ -39,10 +39,9 @@
       </nav>
     </header>
     <!-- Content -->
-    <main class="content">
+    <main class="content" role="main">
       <!-- Hero Section -->
       <section class="hero">
-        <!-- Hero Cta -->
         <div class="cta-section container">
           <img
             class="mastercraft-logo"
@@ -88,9 +87,7 @@
         <div class="project-stats container">
           <ul class="backer-stats">
             <li class="backer-item">
-              <span class="numbers"
-                >$<span class="total-raised">44,914</span></span
-              >
+              <span class="numbers">$<span class="total-raised">44,914</span></span>
               <span class="number-title">of $100,000 backed</span>
             </li>
 
@@ -104,9 +101,8 @@
               <span class="number-title">days left</span>
             </li>
           </ul>
-          <div class="progress-bar" role="progressbar">
-            <div aria-hidden="true" class="tracker" id="progressBar"></div>
-            <span class="sr-only">10%</span>
+          <div class="progress-bar" >
+            <div class="tracker" id="progressBar" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
           </div>
         </div>
       </section>
@@ -229,7 +225,7 @@
           <button class="modal-header__close-btn" id="closeModalBtn">
             <i class="fas fa-times modal-header__icon"></i>
           </button>
-          <h3 class="modal-header__title" id="radio_group_title">
+          <h3 class="modal-header__title" >
             Back this project
           </h3>
           <p class="modal-header__subtitle" id="modal-description">
@@ -237,13 +233,12 @@
             in the world?
           </p>
         </div>
-        <div class="modal-body" role="radiogroup">
+        <div class="modal-body" role="radiogroup" aria-describedby="modal-description">
           <!-- modal item 1 -->
           <div
             class="modal-item"
-            data-item-id="noReward"
             role="radio"
-            aria-labelledby="radio_group_title"
+            aria-describedby="noRewardDesc"
           >
             <input
               class="modal-item__radio-btns"
@@ -251,24 +246,22 @@
               id="noReward"
               name="PledgeAmount"
               aria-checked="false"
+              aria-controls="noRewardCta"
             />
-            <label class="modal-item__label" for="noReward">
-              <div class="modal-item__custom-input">
+            <label class="modal-item__label" for="noReward" aria-labelledby="noRewardTitle">
+              <header class="modal-item__header">
                 <span class="checkmark" aria-hidden="true"></span>
-                <h3 class="modal-item__stand-title"
+                <h3 class="modal-item__stand-title" id="noRewardTitle"
                   >Pledge with no reward</h3
                 >
-              </div>
-              <p class="modal-item__desc">
+              </header>
+              <p class="modal-item__desc" id="noRewardDesc">
                 Choose to support us without a reward if you simply believe in
                 our project. As a backer, you will be signed up to receive
                 product updates via email.
               </p>
             </label>
-            <div class="modal-item__cta">
-              <!-- <p class="error-submitted">
-                You've already pledged with no reward once,Thank you for coming back !
-              </p> -->
+            <div class="modal-item__cta" aria-expanded="false" id="noRewardCta">
               <div class="content-btns">
                 <div class="content-input-container">
                   <span class="money-sign" aria-label="dollar sign">$</span>
@@ -291,27 +284,28 @@
               </div>
               </div>
             </div>
-          </div>
+         
 
           <!-- modal item 2 -->
-          <div class="modal-item" role="radio">
+          <div class="modal-item" role="radio" aria-describedby="bambooStandDesc">
             <input
               class="modal-item__radio-btns"
               type="radio"
               id="bambooStand"
               name="PledgeAmount"
               aria-checked="false"
+              aria-controls="bambooStandCta"
             />
-            <label class="modal-item__label" for="bambooStand">
-              <div class="modal-item__custom-input">
+            <label class="modal-item__label" for="bambooStand" aria-labelledby="noRewardTitle">
+              <header class="modal-item__header">
                 <span class="checkmark" aria-hidden="true"></span>
-                <h3 class="modal-item__stand-title"
+                <h3 class="modal-item__stand-title" id="noRewardTitle"
                   >Bamboo Stand<span class="stand-title__amount"
                     >Pledge $25 or more</span
                   ></h3
                 >
-              </div>
-              <p class="modal-item__desc">
+              </header>
+              <p class="modal-item__desc" id="bambooStandDesc">
                 You get an ergonomic stand made of natural bamboo. You've helped
                 us launch our promotional campaign, and you’ll be added to a
                 special Backer member list.
@@ -321,7 +315,7 @@
                 <span class="stock-text modal-text-left">left</span>
               </div>
             </label>
-            <div class="modal-item__cta">
+            <div class="modal-item__cta" id="bambooStandCta" aria-expanded="false">
               <span class="content-text" id="enter_pledge"
                 >Enter your pledge</span
               >
@@ -347,34 +341,35 @@
             </div>
           </div>
           <!-- modal item 3 -->
-          <div class="modal-item" role="radio">
+          <div class="modal-item" role="radio" aria-describedby="editionStandDesc">
             <input
               class="modal-item__radio-btns"
               type="radio"
               id="editionStand"
               name="PledgeAmount"
               aria-checked="false"
+              aria-controls="editionStandCta"
             />
-            <label class="modal-item__label" for="editionStand">
-              <div class="modal-item__custom-input">
+            <label class="modal-item__label" for="editionStand" aria-labelledby="editionStandTitle">
+              <header class="modal-item__header">
                 <span class="checkmark" aria-hidden="true"></span>
-                <h3 class="modal-item__stand-title"
+                <h3 class="modal-item__stand-title" id="editionStandTitle"
                   >Black Edition Stand<span class="stand-title__amount"
                     >Pledge $75 or more</span
                   ></h3
                 >
-              </div>
-              <p class="modal-item__desc">
+              </header>
+              <p class="modal-item__desc" id="editionStandDesc" aria-expanded="false">
                 You get a Black Special Edition computer stand and a personal
                 thank you. You’ll be added to our Backer member list. Shipping
                 is included.
               </p>
-              <div class="stock-status modal-stock" aria>
+              <div class="stock-status modal-stock">
                 <span class="stock-count" data-stock="editionStand">64</span>
                 <span class="stock-text modal-text-left">left</span>
               </div>
             </label>
-            <div class="modal-item__cta">
+            <div class="modal-item__cta" id="editionStandCta">
               <span class="content-text">Enter your pledge</span>
               <div class="content-btns">
                 <div class="content-input-container">
@@ -398,39 +393,39 @@
             </div>
           </div>
           <!-- modal item 4 -->
-          <div class="modal-item" role="radio">
+          <div class="modal-item" role="radio" aria-describedby="specialStandDesc">
             <input
               class="modal-item__radio-btns"
               type="radio"
               id="specialStand"
               name="PledgeAmount"
-              
+              aria-controls="specialStandTitleCta"
             />
             <label
               class="modal-item__label"
               for="specialStand"
-              
+              aria-labelledby="specialStandTitle"
             >
-              <div class="modal-item__custom-input">
+              <header class="modal-item__header">
                 <span class="checkmark" aria-hidden="true"></span>
-                <h3 class="modal-item__stand-title"
+                <h3 class="modal-item__stand-title" id="specialStandTitle"
                   >Mahogany Special Edition<span class="stand-title__amount"
                     >Pledge $200 or more</span
                   ></h3
                 >
-              </div>
-              <p class="modal-item__desc">
+              </header>
+              <p class="modal-item__desc" id="specialStandDesc">
                 You get two Special Edition Mahogany stands, a Backer T-Shirt,
                 and a personal thank you. You’ll be added to our Backer member
                 list. Shipping is included.
               </p>
-              <div class="stock-status modal-stock" aria>
+              <div class="stock-status modal-stock">
                 <span class="stock-count" data-stock="specialStand">1</span>
                 <span class="stock-text modal-text-left">left</span>
               </div>
             </label>
-            <div class="modal-item__cta">
-              <span class="content-text" id="enter_pledge"
+            <div class="modal-item__cta" id="specialStandTitleCta" aria-expanded="false">
+              <span class="content-text"
                 >Enter your pledge</span
               >
               <div class="content-btns">
@@ -454,6 +449,7 @@
               </div>
             </div>
           </div>
+        </div>
           <!-- modal item 4 end -->
         </div>
       </div>

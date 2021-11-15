@@ -187,11 +187,19 @@ const resetRadioBtns = () => {
     );
     radio.setAttribute("aria-checked", false);
   });
+  const ctaSections = modal.querySelectorAll(".modal-item .modal-item__cta");
+  ctaSections.forEach((item) => {
+    item.setAttribute("aria-expanded", false);
+  });
 };
 const showCtaAndFocusTrap = (element) => {
   element.checked = true;
   element.setAttribute("aria-checked", true);
   element.nextElementSibling.nextElementSibling.classList.add("show-content");
+  element.nextElementSibling.nextElementSibling.setAttribute(
+    "aria-expanded",
+    true
+  );
   checkedParent = element.parentElement;
   pledgeInput = checkedParent.querySelector(".content-input");
   contentBtn = checkedParent.querySelector(".content-btn");
@@ -203,7 +211,6 @@ const showCtaAndFocusTrap = (element) => {
   firstTabStop = currentFocusableEls[0];
   lastTabStop = currentFocusableEls[currentFocusableEls.length - 1];
 };
-
 primaryBtn.addEventListener("click", () => {
   if (!isModalActive && !isModalCompletedActive) {
     modalOpen();
@@ -298,7 +305,7 @@ activeInputs.forEach((item) => {
           openCompletedModal();
         }
       });
-    } else {
+    } else if (inputID == "noReward") {
       contentBtn.addEventListener("click", () => {
         updatedTotalBackers = numWithCommas(
           Number(removeCommas(totalBackers.textContent)) + 1
@@ -353,6 +360,7 @@ const setBarValue = () => {
 
   let currentWidth = 100 - remainingPercentage;
   progressTracker.style.width = `${currentWidth}%`;
+  progressTracker.setAttribute("aria-valuenow", `${currentWidth}`);
 };
 //#endregion
 //#region 7.Modal Completed
@@ -408,4 +416,3 @@ const StepsCompleted = (e) => {
 modalCompletedBtn.addEventListener("click", StepsCompleted);
 //#endregion
 window.addEventListener("DOMContentLoaded", checkStock);
-console.log(modal);
