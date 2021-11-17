@@ -6,10 +6,10 @@ $darkCyan: hsl(176, 72%, 28%);
 $black: hsl(0, 0%, 0%);
 $white: hsl(0, 0%, 100%);
 $darkGray: hsl(0, 0%, 48%);
-$error: #c92432;
-$error-light: #fffafa;
-$success: #28a745;
-$success-light: #edffed;
+$error: hsl(355, 70%, 60%);
+$error-light: hsl(0, 100%, 99%);
+$success: hsl(134, 61%, 41%);
+$success-light: hsl(120, 100%, 96%);
 $scrollbarColor: hsl(0, 0%, 38%);
 //bg-color
 $body-bg: darken($white, 6);

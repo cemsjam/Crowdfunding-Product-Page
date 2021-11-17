@@ -6,7 +6,7 @@
 
 - Accessible
 
-- Keyboard Navigate whole page
+- Use Keyboard to Navigate whole page
 
 # Made with
 
@@ -15,5 +15,3 @@
 - SCSS
 
 - JS
-
-

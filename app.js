@@ -6,6 +6,8 @@ const navLinks = document.querySelector(".nav-links");
 const hamburgerIcon = document.querySelector(".hamburger-icon");
 const header = document.querySelector("header");
 const navItems = navLinks.querySelectorAll(".nav-item");
+// cards
+const cards = document.querySelectorAll(".stand-card-item");
 //Bookmark items
 const bmContainer = document.querySelector(".bm-container");
 const bmText = document.querySelector(".bm-text");
@@ -16,6 +18,7 @@ const primaryBtn = document.querySelector(".btn-primary");
 const rewardBtns = document.querySelectorAll("#rewardBtn");
 const submitBtn = document.querySelectorAll(".content-btn");
 const modal = document.querySelector("#modal");
+const modalContainer = document.querySelector("#modalContainer");
 const radioCardInputs = Array.from(document.getElementsByName("PledgeAmount"));
 // close modal btn
 const closeModalBtn = document.querySelector("#closeModalBtn");
@@ -116,8 +119,8 @@ const bmToggle = (e) => {
 bmContainer.addEventListener("click", bmToggle);
 //#endregion
 //#region 5.modals
-// focustrap elements
 const activeInputs = radioCardInputs.filter((input) => !input.disabled);
+// focustrap elements
 let focusedElementBeforeModal,
   focusableElementsString,
   focusableElements,
@@ -149,17 +152,22 @@ trapTabKey = (e) => {
   }
 };
 const modalOpen = () => {
-  let focusableInputs = radioCardInputs.filter((item) => !item.disabled);
+  let focusableRadios = radioCardInputs.filter((item) => !item.disabled);
   focusedElementBeforeModal = document.activeElement;
   closeMenu();
   modal.classList.add("show-modal");
   disableScrolling();
   openOverlay();
-  focusableElements = [closeModalBtn, focusableInputs[0]];
+  focusableElements = [closeModalBtn, focusableRadios[0]];
   focusableElements = Array.prototype.slice.call(focusableElements);
   firstTabStop = focusableElements[0];
   lastTabStop = focusableElements[focusableElements.length - 1];
   window.addEventListener("keydown", trapTabKey);
+  //to make tab start from modal
+  modalContainer.setAttribute("tabindex", 1);
+  modalContainer.focus();
+  modalContainer.setAttribute("tabindex", -1);
+
   window.addEventListener("keydown", escKeyHandlerModal);
 };
 const modalClose = () => {
@@ -226,7 +234,6 @@ rewardBtns.forEach(function (btn) {
   });
 });
 const checkStock = () => {
-  const cards = document.querySelectorAll(".stand-card-item");
   cards.forEach((card) => {
     const cardStock = card.querySelector(".stock-count").textContent;
     const cardBtn = card.querySelector("button");
@@ -285,8 +292,9 @@ activeInputs.forEach((item) => {
         };
         if (minValue > value || value == null || isNaN(value)) {
           addErrorAttr();
+          pledgeInput.value = null;
           pledgeInput.addEventListener("input", (e) => {
-            currentValue = e.target.value;
+            let currentValue = e.target.value;
             if (minValue <= currentValue) {
               addSuccessAttr();
             } else if (minValue > currentValue) {
@@ -301,7 +309,6 @@ activeInputs.forEach((item) => {
             parseInt(removeCommas(totalRaised.textContent)) +
               parseInt(pledgeInput.value)
           );
-          modalClose();
           openCompletedModal();
         }
       });
@@ -370,21 +377,22 @@ const escKeyHandlerModalCompleted = (e) => {
   }
 };
 const openCompletedModal = () => {
-  const open = () => {
-    modalCompleted.classList.add("show-modal-completed");
-  };
-  focusableElements = modalCompletedBtn;
-  firstTabStop = focusableElements;
-  lastTabStop = focusableElements;
   window.addEventListener("keydown", escKeyHandlerModalCompleted);
   modalClose();
   isModalCompletedActive = true;
   openOverlay();
   disableScrolling();
-  setTimeout(open, 500);
   resetRadioBtns();
-
-  window.addEventListener("keydown", trapTabKey), true;
+  setTimeout(() => {
+    modalCompleted.classList.add("show-modal-completed");
+    focusableElements = modalCompletedBtn;
+    firstTabStop = focusableElements;
+    lastTabStop = focusableElements;
+    window.addEventListener("keydown", trapTabKey);
+    modalCompleted.setAttribute("tabindex", 0);
+    modalCompleted.focus();
+    modalCompleted.setAttribute("tabindex", -1);
+  }, 500);
 };
 const scrollToViewStats = () => {
   const statsPos =
