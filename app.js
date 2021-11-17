@@ -167,7 +167,6 @@ const modalOpen = () => {
   modalContainer.setAttribute("tabindex", 1);
   modalContainer.focus();
   modalContainer.setAttribute("tabindex", -1);
-
   window.addEventListener("keydown", escKeyHandlerModal);
 };
 const modalClose = () => {
