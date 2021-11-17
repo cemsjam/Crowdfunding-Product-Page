@@ -20,9 +20,9 @@
   </head>
   <body>
     <!-- Header -->
-    <header role="banner" class="main-header">
+    <header class="main-header">
       <img src="./images/logo.svg" class="logo" alt="logo of Crowdfunding" />
-      <nav class="main-nav" role="navigation" aria-label="Main Menu">
+      <nav class="main-nav" aria-label="Main Menu">
         <button
           class="hamburger-menu"
           aria-label="Toggle Navigation"
@@ -39,7 +39,7 @@
       </nav>
     </header>
     <!-- Content -->
-    <main class="content" role="main">
+    <main class="content">
       <!-- Hero Section -->
       <section class="hero">
         <div class="cta-section container">
@@ -54,7 +54,7 @@
             strain.
           </p>
           <div class="btn-group">
-            <button href="#" class="btn btn-primary">Back this project</button>
+            <button class="btn btn-primary">Back this project</button>
             <div class="bm-container">
               <a href="#" class="btn-secondary">
                 <span class="bm-icon" aria-hidden="true"
@@ -146,9 +146,9 @@
                     <span class="stock-text">left</span>
                   </div>
                   <button
-                    href="#"
+                
                     class="btn btn-reward"
-                    id="rewardBtn"
+                    
                     type="button"
                     aria-controls="modal"
                   >
@@ -175,9 +175,9 @@
                     <span class="stock-text">left</span>
                   </div>
                   <button
-                    href="#"
+                 
                     class="btn btn-reward"
-                    id="rewardBtn"
+                    
                     type="button"
                     aria-controls="modal"
                   >
@@ -201,7 +201,7 @@
                     <span class="stock-count" data-stock="specialStand">1</span>
                     <span class="stock-text">left</span>
                   </div>
-                  <button type="button" href="#" class="btn btn-reward" id="rewardBtn" aria-controls="modal">
+                  <button type="button" class="btn btn-reward"  aria-controls="modal">
                     Out of Stock
                   </button>
                 </div>
@@ -239,13 +239,14 @@
             class="modal-item"
             role="radio"
             aria-describedby="noRewardDesc"
+            aria-checked="false"
           >
             <input
               class="modal-item__radio-btns"
               type="radio"
               id="noReward"
               name="PledgeAmount"
-              aria-checked="false"
+              
               aria-controls="noRewardCta"
             />
             <label class="modal-item__label" for="noReward" aria-labelledby="noRewardTitle">
@@ -264,7 +265,7 @@
             <div class="modal-item__cta" aria-expanded="false" id="noRewardCta">
               <div class="content-btns">
                 <div class="content-input-container">
-                  <span class="money-sign" aria-label="dollar sign">$</span>
+                  <span class="money-sign">$</span>
                   <input
                     type="text"
                     class="content-input disabled"
@@ -274,9 +275,8 @@
                   />
                 </div>
                   <button
-                  href="#"
+               
                   class="btn content-btn"
-                  id="contentBtn"
                   type="button"
                 >
                   Continue
@@ -287,19 +287,18 @@
          
 
           <!-- modal item 2 -->
-          <div class="modal-item" role="radio" aria-describedby="bambooStandDesc">
+          <div class="modal-item" role="radio" aria-checked="false" aria-describedby="bambooStandDesc">
             <input
               class="modal-item__radio-btns"
               type="radio"
               id="bambooStand"
               name="PledgeAmount"
-              aria-checked="false"
               aria-controls="bambooStandCta"
             />
-            <label class="modal-item__label" for="bambooStand" aria-labelledby="noRewardTitle">
+            <label class="modal-item__label" for="bambooStand" aria-labelledby="bambooTitle">
               <header class="modal-item__header">
                 <span class="checkmark" aria-hidden="true"></span>
-                <h3 class="modal-item__stand-title" id="noRewardTitle"
+                <h3 class="modal-item__stand-title" id="bambooTitle"
                   >Bamboo Stand<span class="stand-title__amount"
                     >Pledge $25 or more</span
                   ></h3
@@ -321,7 +320,7 @@
               >
               <div class="content-btns">
                 <div class="content-input-container">
-                  <span class="money-sign" aria-label="dollar sign">$</span>
+                  <span class="money-sign">$</span>
                   <input
                     type="text"
                     class="content-input"
@@ -330,9 +329,8 @@
                   />
                 </div>
                 <button
-                  href="#"
+         
                   class="btn content-btn"
-                  id="contentBtn"
                   type="button"
                 >
                   Continue
@@ -341,13 +339,13 @@
             </div>
           </div>
           <!-- modal item 3 -->
-          <div class="modal-item" role="radio" aria-describedby="editionStandDesc">
+          <div class="modal-item" aria-checked="false" role="radio" aria-describedby="editionStandDesc">
             <input
               class="modal-item__radio-btns"
               type="radio"
               id="editionStand"
               name="PledgeAmount"
-              aria-checked="false"
+              
               aria-controls="editionStandCta"
             />
             <label class="modal-item__label" for="editionStand" aria-labelledby="editionStandTitle">
@@ -373,7 +371,7 @@
               <span class="content-text">Enter your pledge</span>
               <div class="content-btns">
                 <div class="content-input-container">
-                  <span class="money-sign" aria-label="dollar sign">$</span>
+                  <span class="money-sign" >$</span>
                   <input
                     type="text"
                     class="content-input"
@@ -382,9 +380,8 @@
                   />
                 </div>
                 <button
-                  href="#"
+              
                   class="btn content-btn"
-                  id="contentBtn"
                   type="button"
                 >
                   Continue
@@ -393,7 +390,7 @@
             </div>
           </div>
           <!-- modal item 4 -->
-          <div class="modal-item" role="radio" aria-describedby="specialStandDesc">
+          <div class="modal-item" role="radio" aria-checked="false" aria-describedby="specialStandDesc">
             <input
               class="modal-item__radio-btns"
               type="radio"
@@ -430,7 +427,7 @@
               >
               <div class="content-btns">
                 <div class="content-input-container">
-                  <span class="money-sign" aria-label="dollar sign">$</span>
+                  <span class="money-sign">$</span>
                   <input
                     type="text"
                     class="content-input"
@@ -439,9 +436,8 @@
                   />
                 </div>
                 <button
-                  href="#"
+              
                   class="btn content-btn"
-                  id="contentBtn"
                   type="button"
                 >
                   Continue

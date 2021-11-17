@@ -1232,7 +1232,7 @@ img:not(.logo) {
 
 .modal-item__cta .content-btns .content-input-container[data-success] .content-input {
   border-color: #29a847;
-  background-color: #ebffeb;
+  background-color: #fafffa;
   caret-color: #29a847;
 }
 

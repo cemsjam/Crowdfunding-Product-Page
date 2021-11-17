@@ -12,10 +12,10 @@ const cards = document.querySelectorAll(".stand-card-item");
 const bmContainer = document.querySelector(".bm-container");
 const bmText = document.querySelector(".bm-text");
 //modal radio card buttons
-const contentBtns = Array.from(document.querySelectorAll("#contentBtn"));
+const contentBtns = Array.from(document.querySelectorAll(".content-btn"));
 // modal items
 const primaryBtn = document.querySelector(".btn-primary");
-const rewardBtns = document.querySelectorAll("#rewardBtn");
+const rewardBtns = document.querySelectorAll(".btn-reward");
 const submitBtn = document.querySelectorAll(".content-btn");
 const modal = document.querySelector("#modal");
 const modalContainer = document.querySelector("#modalContainer");
@@ -192,7 +192,7 @@ const resetRadioBtns = () => {
     radio.nextElementSibling.nextElementSibling.classList.remove(
       "show-content"
     );
-    radio.setAttribute("aria-checked", false);
+    radio.parentElement.setAttribute("aria-checked", false);
   });
   const ctaSections = modal.querySelectorAll(".modal-item .modal-item__cta");
   ctaSections.forEach((item) => {
@@ -201,7 +201,7 @@ const resetRadioBtns = () => {
 };
 const showCtaAndFocusTrap = (element) => {
   element.checked = true;
-  element.setAttribute("aria-checked", true);
+  element.parentElement.setAttribute("aria-checked", true);
   element.nextElementSibling.nextElementSibling.classList.add("show-content");
   element.nextElementSibling.nextElementSibling.setAttribute(
     "aria-expanded",
