@@ -110,6 +110,9 @@
       .modal-item__stand-title {
       color: $moderateCyan;
     }
+    &:not(:checked):not(:disabled):hover + label > header .checkmark {
+      border-color: $moderateCyan;
+    }
   }
   &__label {
     display: block;

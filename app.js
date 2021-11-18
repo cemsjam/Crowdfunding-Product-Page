@@ -388,7 +388,7 @@ const openCompletedModal = () => {
     firstTabStop = focusableElements;
     lastTabStop = focusableElements;
     window.addEventListener("keydown", trapTabKey);
-    modalCompleted.setAttribute("tabindex", 0);
+    modalCompleted.setAttribute("tabindex", 1);
     modalCompleted.focus();
     modalCompleted.setAttribute("tabindex", -1);
   }, 500);
