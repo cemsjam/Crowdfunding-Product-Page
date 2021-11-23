@@ -852,6 +852,7 @@ img:not(.logo) {
   transition: visibility 0ms ease 0.5s, opacity 0.5s, transform 0.5s;
   transition: visibility 0ms ease 0.5s, opacity 0.5s, transform 0.5s, -webkit-transform 0.5s;
   visibility: hidden;
+  pointer-events: none;
   z-index: 1000;
 }
 
@@ -929,6 +930,7 @@ img:not(.logo) {
           transform: scale(1);
   visibility: visible;
   scrollbar-width: 0;
+  pointer-events: all;
   -webkit-transition: visibility 0ms, opacity 0.5s, -webkit-transform 0.5s;
   transition: visibility 0ms, opacity 0.5s, -webkit-transform 0.5s;
   transition: visibility 0ms, opacity 0.5s, transform 0.5s;

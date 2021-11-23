@@ -12,7 +12,7 @@
   transform: scale(0.9);
   transition: visibility 0ms ease 0.5s, opacity 0.5s, transform 0.5s;
   visibility: hidden;
-
+  pointer-events: none;
   z-index: $zIndexModals;
 }
 .modal {
@@ -74,6 +74,7 @@
   transform: scale(1);
   visibility: visible;
   scrollbar-width: 0;
+  pointer-events: all;
   transition: visibility 0ms, opacity 0.5s, transform 0.5s;
 }
 #modalContainer::-webkit-scrollbar {
